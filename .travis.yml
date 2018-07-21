@@ -1,21 +1,21 @@
 sudo: required
 before_install:
-  - sudo apt-get install g++ 
-  - sudo apt-get install qtdeclarative5-dev
-  - sudo apt-get install qtchooser
-  
-# Enable C++ support
+- sudo apt-get install g++
+- sudo apt-get install qtdeclarative5-dev
+- sudo apt-get install qtchooser
 language: cpp
-
-# Compiler selection
 compiler:
-  - gcc
-  
-install:
-
-# Build steps
+- gcc
+install: 
 script:
-  - mkdir build
-  - cd build
-  - qtchooser -run-tool=qmake -qt=5 ../qmodbus.pro
-  - make -j 8
+- mkdir build
+- cd build
+- qtchooser -run-tool=qmake -qt=5 ../qmodbus.pro
+- make -j 8
+deploy:
+  provider: releases
+  api_key:
+    secure: dhggpej2ReqOpgZj0vPnewwCThGO4FzMlFlRBrgp5j2E94413FUA9sSY67MvlWjb5CfzG2OHNMPboYLQ+frqhcUCHDA/sH8usEQ5LzYOs87fu/n49x8Q8nAod5XrAd6q/arQDLCOKaIxKOPdNFsla/WWMfZv9hTXHNviUaYOFf00OODMxB9volJ6EGd6twKxpJ2ihNWvtDvN8WrEeeWTr6O0bXXUHcZOiO2MoYLdg2b6eP9l6QsX7PxNXwvAUUdqDqg1RTSdNzLFyhUcK1gKgpnbUvZ54o0cu8Md7GIHM4Gcioyv/LKvTxU4tzowxPv3kSeFGQULgO5qD7dHp3nL7L2Zw3tvA2ViUE8zhuBO2al96n6tW+uL7bHARh4An4RiE1vXrB/sPnweTvyQp0iXmLv83atOOWCCGbUaBzahKnE/BoYz8tBDscOoeFkgr9qGb62Bg8nYJdlyOdcSJpPV+m8R/eGAwnlFAp3+1PrHlJUubrJlycPqbRUR+s5BGIdjFNHxRS3Z0xwmh6ttAQEPi+ui6vUs3z86QrD1aQnDJajidzsqIl9k3qGGUiE6E5gVFp+Drhvy5NOpTGMtkpTiPW/VnEb3Xhod0hEPLx6y/Gc8HfLc9trZuY32awUylZ/D060zDJigLQ7lGBXrYPjcegr9SiLWM348eYkorekRkKM=
+  file: build/modbus
+  on:
+    repo: asanza/qmodbus
