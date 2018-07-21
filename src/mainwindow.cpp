@@ -266,7 +266,7 @@ static QString descriptiveDataTypeName( int funcCode )
 		case MODBUS_FC_WRITE_MULTIPLE_REGISTERS:
 			return "Holding Register (16 bit)";
 		case MODBUS_FC_READ_INPUT_REGISTERS:
-			return "Input Register (16 bit)";
+            return "Input Register (16 bit)";
 		default:
 			break;
 	}
@@ -333,18 +333,33 @@ void MainWindow::updateRegisterView( void )
 	const int addr = ui->startAddr->value();
 
 	int rowCount = 0;
-	switch( func )
+    switch( func )
 	{
 		case MODBUS_FC_WRITE_SINGLE_REGISTER:
 		case MODBUS_FC_WRITE_SINGLE_COIL:
-			ui->numCoils->setEnabled( false );
-			rowCount = 1;
+            ui->label_8->setText("Start address");
+            ui->label_9->setText("Num of coils");
+            ui->numCoils->setEnabled( false );
+            rowCount = 1;
 			break;
 		case MODBUS_FC_WRITE_MULTIPLE_COILS:
 		case MODBUS_FC_WRITE_MULTIPLE_REGISTERS:
-			rowCount = ui->numCoils->value();
-		default:
-			ui->numCoils->setEnabled( true );
+            ui->label_8->setText("Start address");
+            ui->label_9->setText("Num of coils");
+            rowCount = ui->numCoils->value();
+            ui->numCoils->setEnabled( true );
+            ui->numCoils->setMinimum(1);
+            break;
+        case MODBUS_FC_DIAGNOSTIC_FUNCTION:
+            ui->label_8->setText("Subfunction Code");
+            ui->label_9->setText("Data");
+            ui->numCoils->setMinimum(0);
+            ui->numCoils->setEnabled( true );
+            break;
+        default:
+            ui->label_8->setText("Start address");
+            ui->label_9->setText("Num of coils");
+            ui->numCoils->setEnabled( true );
 			break;
 	}
 
