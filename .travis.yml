@@ -3,17 +3,17 @@ before_install:
 - sudo apt-get install g++
 - sudo apt-get install qtdeclarative5-dev
 - sudo apt-get install qtchooser
-- apt-get install autoconf automake autopoint
-- apt-get install bash bison bzip2 flex g++
-- apt-get install g++-multilib gettext git
-- apt-get install gperf intltool libc6-dev-i386
-- apt-get install libgdk-pixbuf2.0-dev libltdl-dev 
-- apt-get install libssl-dev libtool-bin 
-- apt-get install libxml-parser-perl
-- apt-get install make openssl p7zip-full
-- apt-get install patch perl pkg-config 
-- apt-get install python ruby scons sed unzip
-- apt-get install wget xz-utils
+- sudo apt-get install autoconf automake autopoint
+- sudo apt-get install bash bison bzip2 flex g++
+- sudo apt-get install g++-multilib gettext git
+- sudo apt-get install gperf intltool libc6-dev-i386
+- sudo apt-get install libgdk-pixbuf2.0-dev libltdl-dev 
+- sudo apt-get install libssl-dev libtool-bin 
+- sudo apt-get install libxml-parser-perl
+- sudo apt-get install make openssl p7zip-full
+- sudo apt-get install patch perl pkg-config 
+- sudo apt-get install python ruby scons sed unzip
+- sudo apt-get install wget xz-utils
 - git clone https://github.com/mxe/mxe.git
 - cd mxe && make qt
 - cd ..
