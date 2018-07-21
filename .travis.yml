@@ -15,7 +15,8 @@ before_install:
 - sudo apt-get install python ruby scons sed unzip
 - sudo apt-get install wget xz-utils
 - git clone https://github.com/mxe/mxe.git
-- travis_wait 90 cd mxe && make -j8 qt
+- cd mxe
+- travis_wait 90 make -j8 qt
 - cd ..
 
 
