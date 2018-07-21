@@ -8,7 +8,7 @@ before_install:
 - sudo apt-get install g++-multilib gettext git
 - sudo apt-get install gperf intltool libc6-dev-i386
 - sudo apt-get install libgdk-pixbuf2.0-dev libltdl-dev 
-- sudo apt-get install libssl-dev libtool-bin 
+- sudo apt-get install libssl-dev libtool
 - sudo apt-get install libxml-parser-perl
 - sudo apt-get install make openssl p7zip-full
 - sudo apt-get install patch perl pkg-config 
