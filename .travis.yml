@@ -17,5 +17,5 @@ install:
 script:
   - mkdir build
   - cd build
-  - ../qtchooser -run-tool=qmake -qt=5 ../qmodbus.pro
+  - qtchooser -run-tool=qmake -qt=5 ../qmodbus.pro
   - make -j 8
