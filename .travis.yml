@@ -16,7 +16,7 @@ before_install:
 - sudo apt-get install wget xz-utils
 - git clone https://github.com/mxe/mxe.git
 - cd mxe
-- travis_wait 90 make -j8 qt
+- make -j32 qt
 - cd ..
 
 
