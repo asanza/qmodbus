@@ -27,6 +27,7 @@
 #include <QScrollBar>
 
 #include <errno.h>
+#include <iostream>
 
 #include "mainwindow.h"
 #include "BatchProcessor.h"
@@ -88,6 +89,9 @@ MainWindow::MainWindow( QWidget * _parent ) :
 	connect( ui->functionCode, SIGNAL( currentIndexChanged( int ) ),
 		this, SLOT( enableHexView() ) );
 
+    m_settingsFile = QApplication::applicationDirPath() + "/settings.ini";
+    std::cout << m_settingsFile.toStdString() << std::endl;
+    loadSettings();
 
 	updateRegisterView();
 	updateRequestPreview();
@@ -117,7 +121,24 @@ MainWindow::MainWindow( QWidget * _parent ) :
 
 MainWindow::~MainWindow()
 {
+    saveSettings();
 	delete ui;
+}
+
+void MainWindow::loadSettings()
+{
+ QSettings settings(m_settingsFile, QSettings::NativeFormat);
+ ui->tabWidget->setCurrentIndex(settings.value("mode", ui->tabWidget->currentIndex()).toInt());
+ ui->slaveID->setValue(settings.value("slaveId", ui->slaveID->value()).toInt());
+ ui->functionCode->setCurrentIndex(settings.value("function", ui->functionCode->currentIndex()).toInt());
+}
+
+void MainWindow::saveSettings()
+{
+ QSettings settings(m_settingsFile, QSettings::NativeFormat);
+ settings.setValue("mode", ui->tabWidget->currentIndex());
+ settings.setValue("slaveId", ui->slaveID->value());
+ settings.setValue("function", ui->functionCode->currentIndex());
 }
 
 void MainWindow::keyPressEvent(QKeyEvent* event)

@@ -14,11 +14,10 @@ before_install:
 - sudo apt-get install patch perl pkg-config 
 - sudo apt-get install python ruby scons sed unzip
 - sudo apt-get install wget xz-utils
-- git clone https://github.com/mxe/mxe.git
-- cd mxe
-- pwd
-- make -j32 qt
-- cd ..
+- wget http://42.dirac.org/build/cygwin-buildtools-mxe.tar.gz
+- tar -zxvf cygwin-buildtools-mxe.tar.gz
+- sudo mkdir -p /home/diego/Projects/mxe
+- sudo mv usr /home/diego/Projects/mxe
 
 
 language: cpp
@@ -26,16 +25,17 @@ compiler:
 - gcc
 install: 
 script:
-- export PATH=~/mxe/usr/bin:$PATH
+- export PATH=/home/diego/Projects/mxe/usr/bin:$PATH
 - mkdir build
 - cd build
-- ../mxe/usr/i686-pc-mingw32/qt/bin/qmake ../qmodbus.pro && make
+- i686-w64-mingw32.static-qmake-qt5 ../qmodbus.pro 
+- make -j 8
 #- qtchooser -run-tool=qmake -qt=5 ../qmodbus.pro
 #- make -j 8
 deploy:
   provider: releases
   api_key:
     secure: dhggpej2ReqOpgZj0vPnewwCThGO4FzMlFlRBrgp5j2E94413FUA9sSY67MvlWjb5CfzG2OHNMPboYLQ+frqhcUCHDA/sH8usEQ5LzYOs87fu/n49x8Q8nAod5XrAd6q/arQDLCOKaIxKOPdNFsla/WWMfZv9hTXHNviUaYOFf00OODMxB9volJ6EGd6twKxpJ2ihNWvtDvN8WrEeeWTr6O0bXXUHcZOiO2MoYLdg2b6eP9l6QsX7PxNXwvAUUdqDqg1RTSdNzLFyhUcK1gKgpnbUvZ54o0cu8Md7GIHM4Gcioyv/LKvTxU4tzowxPv3kSeFGQULgO5qD7dHp3nL7L2Zw3tvA2ViUE8zhuBO2al96n6tW+uL7bHARh4An4RiE1vXrB/sPnweTvyQp0iXmLv83atOOWCCGbUaBzahKnE/BoYz8tBDscOoeFkgr9qGb62Bg8nYJdlyOdcSJpPV+m8R/eGAwnlFAp3+1PrHlJUubrJlycPqbRUR+s5BGIdjFNHxRS3Z0xwmh6ttAQEPi+ui6vUs3z86QrD1aQnDJajidzsqIl9k3qGGUiE6E5gVFp+Drhvy5NOpTGMtkpTiPW/VnEb3Xhod0hEPLx6y/Gc8HfLc9trZuY32awUylZ/D060zDJigLQ7lGBXrYPjcegr9SiLWM348eYkorekRkKM=
-  file: build/modbus
+  file: build/relase/qmodbus.exe
   on:
     repo: asanza/qmodbus.exe

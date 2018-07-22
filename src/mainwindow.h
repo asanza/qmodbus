@@ -93,6 +93,8 @@ private slots:
 private:
     void keyPressEvent(QKeyEvent* event);
     void keyReleaseEvent(QKeyEvent* event);
+    void loadSettings();
+    void saveSettings();
 
     Ui::MainWindowClass * ui;
     modbus_t * m_modbus;
@@ -100,6 +102,7 @@ private:
     QLabel * m_statusText;
     QTimer * m_pollTimer;
     QTimer * m_statusTimer;
+    QString m_settingsFile;
     bool m_tcpActive;
     bool m_poll;
 };

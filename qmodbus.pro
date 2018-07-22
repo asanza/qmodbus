@@ -4,6 +4,8 @@ VERSION = 0.1.0
 
 QT += gui widgets
 
+QMAKE_CXXFLAGS +=  -std=gnu++11 
+
 SOURCES += src/main.cpp \
     src/mainwindow.cpp \
     src/BatchProcessor.cpp \
