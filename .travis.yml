@@ -15,7 +15,7 @@ before_install:
 - sudo apt-get install python ruby scons sed unzip
 - sudo apt-get install wget xz-utils
 - wget http://42.dirac.org/build/cygwin-buildtools-mxe.tar.gz
-- tar -zxvf cygwin-buildtools-mxe.tar.gz
+- tar -zxf cygwin-buildtools-mxe.tar.gz
 - sudo mkdir -p /home/diego/Projects/mxe
 - sudo mv usr /home/diego/Projects/mxe
 
