@@ -16,6 +16,7 @@ before_install:
 - sudo apt-get install wget xz-utils
 - git clone https://github.com/mxe/mxe.git
 - cd mxe
+- pwd
 - make -j32 qt
 - cd ..
 
